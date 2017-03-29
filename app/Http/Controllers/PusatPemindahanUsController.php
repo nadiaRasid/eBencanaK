@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\pusatPemindahan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class PusatPemindahanUsController extends Controller
 {
@@ -13,7 +17,9 @@ class PusatPemindahanUsController extends Controller
      */
     public function index()
     {
-      return view('PusatPemindahanU.index');
+      $searchResults =Input::get('search');
+      $pusat_pemindahans = PusatPemindahan::where('jenisBencana','like','%'.$searchResults.'%')->paginate(5);
+      return view('pusatPemindahan.index', compact('pusat_pemindahans'));
 
     }
 
@@ -22,9 +28,18 @@ class PusatPemindahanUsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index2()
+    {
+      return view('pusatPemindahan.index2');
+
+    }
+
     public function create()
     {
-        //
+        $searchResults =Input::get('search');
+        $pusat_pemindahans = PusatPemindahan::where('jenisBencana','like','%'.$searchResults.'%')->paginate(5);
+        return view('pusatPemindahan.create', compact('pusat_pemindahans'));
+
     }
 
     /**
@@ -35,7 +50,25 @@ class PusatPemindahanUsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, ['jenisBencana' => 'required',   ]);
+      $this->validate($request, ['namaPusat'=> 'required',   ]);
+      $this->validate($request, [ 'namaKawasan'=> 'required',   ]);
+      $this->validate($request, ['noTelPusat'=> 'required',   ]);
+      $this->validate($request, [ 'tarikhBuka'=> 'required',   ]);
+      $this->validate($request, [ 'tarikhTutup'=> 'required',   ]);
+
+      $pusatPemindahan= new PusatPemindahan;
+      $pusatPemindahan->jenisBencana = $request->jenisBencana;
+      $pusatPemindahan->namaPusat = $request->namaPusat;
+      $pusatPemindahan->namaKawasan = $request->namaKawasan;
+      $pusatPemindahan->noTelPusat = $request->noTelPusat;
+      $pusatPemindahan->tarikhBuka = $request->tarikhBuka;
+      $pusatPemindahan->tarikhTutup = $request->tarikhTutup;
+      $pusatPemindahan->user_id = Auth::user()->id;
+      $pusatPemindahan->save();
+
+      return redirect()->action('PusatPemindahanUsController@store')->withMessage('Pusat Pemindahan telah dihantar dan direkodkan');
+      //  dd ($request->all());
     }
 
     /**
@@ -57,7 +90,8 @@ class PusatPemindahanUsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $pusatPemindahan = PusatPemindahan::findOrFail($id);
+    return view('pusatPemindahan.edit', compact('pusatPemindahan'));
     }
 
     /**
@@ -69,7 +103,25 @@ class PusatPemindahanUsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, ['jenisBencana' => 'required',   ]);
+      $this->validate($request, ['namaPusat'=> 'required',   ]);
+      $this->validate($request, [ 'namaKawasan'=> 'required',   ]);
+      $this->validate($request, ['noTelPusat'=> 'required',   ]);
+      $this->validate($request, [ 'tarikhBuka'=> 'required',   ]);
+      $this->validate($request, [ 'tarikhTutup'=> 'required',   ]);
+
+      $pusatPemindahan = PusatPemindahan::findOrFail($id);
+      $pusatPemindahan->jenisBencana = $request->jenisBencana;
+      $pusatPemindahan->namaPusat = $request->namaPusat;
+      $pusatPemindahan->namaKawasan = $request->namaKawasan;
+      $pusatPemindahan->noTelPusat = $request->noTelPusat;
+      $pusatPemindahan->tarikhBuka = $request->tarikhBuka;
+      $pusatPemindahan->tarikhTutup = $request->tarikhTutup;
+      $pusatPemindahan->user_id = Auth::user()->id;
+      $pusatPemindahan->save();
+
+      return redirect()->action('PusatPemindahanUsController@create')->withMessage('Pusat Pemindahan telah dikemaskini');
+      //  dd ($request->all());
     }
 
     /**
@@ -80,6 +132,8 @@ class PusatPemindahanUsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $pusatPemindahan = PusatPemindahan::findOrFail($id);
+      $pusatPemindahan->delete();
+      return back()->withError('Senarai pusat pemindahan  telah dipadam');
     }
 }

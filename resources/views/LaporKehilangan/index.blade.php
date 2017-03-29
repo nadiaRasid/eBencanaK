@@ -11,80 +11,48 @@
                 <form class="form-horizontal" action="{{ action('LaporKehilangansController@store') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
-                    <div class="form-group{{ $errors->has('jenisBencana') ? ' has-error' : '' }}">
-                        <label for="jenisBencana" class="col-md-4 control-label">Jenis Bencana</label>
-
-                        <div class="col-md-6">
-                            <input id="jenisBencana" type="text" class="form-control" name="jenisBencana" placeholder="Jenis Bencana" value="{{ old('jenisBencana') }}" required autofocus>
-
-                            @if ($errors->has('jenisBencana'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('jenisBencana') }}</strong>
-                                </span>
-                            @endif
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Jenis Bencana:</strong>
+                            {{ Form::select('jenisBencana', ['Pilih Bencana' => 'Pilih Bencana','Banjir' => 'Banjir', 'Jerebu' => 'Jerebu', 'Tanah Runtuh' => 'Tanah Runtuh','Taufan' => 'Taufan'], null, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                    <div class="form-group{{ $errors->has('namaMangsa') ? ' has-error' : '' }}">
-                        <label for="namaMangsa" class="col-md-4 control-label">Nama Mangsa</label>
 
-                        <div class="col-md-6">
-                            <input id="namaMangsa" type="text" class="form-control" name="namaMangsa" placeholder="Nama Mangsa" value="{{ old('namaMangsa') }}" required autofocus>
-
-                            @if ($errors->has('namaMangsa'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('namaMangsa') }}</strong>
-                                </span>
-                            @endif
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Name Mangsa:</strong>
+                            {!! Form::text('namaMangsa', null, array('placeholder' => 'Name Mangsa','class' => 'form-control')) !!}
                         </div>
                     </div>
-                    <div class="form-group{{ $errors->has('alamatMangsa') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label">Alamat Mangsa</label>
 
-                        <div class="col-md-6">
-                                                  <textarea class="form-control" name="alamatMangsa" placeholder="Alamat Mangsa" rows="6"
-                                                            value="{{ old('alamatMangsa') }}" maxlength="500"></textarea>
-                                                  <p class="text-muted">Maxmimum character is 100</p>
-                                                  @if($errors->has('alamatMangsa'))
-                                                      <span class="help-block">
-                                                          <strong>{{ $errors->first('alamatMangsa') }}</strong>
-                                                      </span>
-                                                  @endif
-                                              </div>
-                                          </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Alamat Mangsa:</strong>
+                            {!! Form::textarea('alamatMangsa', null, array('placeholder' => 'Alamat Mangsa','class' => 'form-control')) !!}
 
-                                          <div class="form-group{{ $errors->has('phoneMangsa') ? ' has-error' : '' }}">
-                                              <label for="phoneMangsa" class="col-md-4 control-label">No.Tel Mangsa</label>
+                        </div>
+                    </div>
 
-                                              <div class="col-md-6">
-                                                  <input id="phoneMangsa" type="text" class="form-control" name="phoneMangsa" placeholder="000-0000000" value="{{ old('phoneMangsa') }}" required autofocus>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>No.Tel Mangsa:</strong>
+                            {!! Form::text('phoneMangsa', null, array('placeholder' => 'No.Tel Mangsa Mangsa','class' => 'form-control')) !!}
 
-                                                  @if ($errors->has('phoneMangsa'))
-                                                      <span class="help-block">
-                                                          <strong>{{ $errors->first('phoneMangsa') }}</strong>
-                                                      </span>
-                                                  @endif
-                                              </div>
-                                          </div>
+                        </div>
+                    </div>
 
-                                          <div class="form-group{{ $errors->has('tarikhHilang') ? ' has-error' : '' }}">
-                                              <label for="tarikhHilang" class="col-md-4 control-label">Tarikh Hilang</label>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Tarikh Hilang:</strong>
+                            {!! Form::date('tarikhHilang', null, array('placeholder' => 'Tarikh Hilang','class' => 'form-control')) !!}
 
-                                              <div class="col-md-6">
-                                                  <input id="tarikhHilang" type="date" class="form-control" name="tarikhHilang" value="{{ old('tarikhHilang') }}" required autofocus>
+                        </div>
+                    </div>
 
-                                                  @if ($errors->has('tarikhHilang'))
-                                                      <span class="help-block">
-                                                          <strong>{{ $errors->first('tarikhHilang') }}</strong>
-                                                      </span>
-                                                  @endif
-                                              </div>
-                                          </div>
-
-
-                                          <div class="form-group">
-                                              <div class="col-sm-offset-4 col-sm-10">
-                                                  <a href="{{ action('LaporKehilangansController@index') }}" class="btn btn-default">Cancel</a>
-                                                  <button type="submit" class="btn btn-success">Save</button>
+                      <div class="form-group">
+                          <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                              <a href="{{ action('LaporKehilangansController@index') }}" class="btn btn-default">Cancel</a>
+                                  <button type="submit" class="btn btn-success">Save</button>
                                               </div>
                                           </div>
                                       </form>

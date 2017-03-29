@@ -1,4 +1,4 @@
-
+@include('modal.destroy-modal')
 @extends('layouts.app')
 @section('content')
 
@@ -36,6 +36,8 @@
           @if( $LaporKehilangan->user_id == Auth::user()->id)
           <a href="{{ action('LaporKehilangansController@edit', $LaporKehilangan->id) }}"
           class="btn btn-primary btn-sm">Edit</a>
+          <a href="{{ action('LaporKehilangansController@destroy',$LaporKehilangan->id) }}"
+            class="btn btn-danger btn-sm" id="confirm-modal">Padam</a>
           @endif
           </td>
           </tr>

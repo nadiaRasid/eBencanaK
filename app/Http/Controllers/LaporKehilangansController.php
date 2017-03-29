@@ -113,6 +113,9 @@ class LaporKehilangansController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $LaporKehilangan = LaporKehilangan::findOrFail($id);
+      $LaporKehilangan->delete();
+      return back()->withError('Laporan Kehilangan Mangsa telah dipadam');
+
     }
 }
