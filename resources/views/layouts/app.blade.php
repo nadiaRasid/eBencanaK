@@ -20,94 +20,153 @@
         ]) !!};
     </script>
 </head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top">
+
             <div class="container">
                 <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'eBencana Kemaman') }}
                     </a>
                 </div>
                 <div class="collapse navbar-collapse " id="app-navbar-collapse">
-                                   <!-- Left Side Of Navbar -->
-                                   <ul class="nav navbar-nav">
-                                       @if(Auth::check())
-                                           <!-- <li><a href="{{ url('profile') }}">Kemaskini Profil</a></li> -->
-                                           <li><a href="{{ url('/home') }}">Laman Utama</a></li>
-                                           <li><a href="{{ url('3') }}">Amaran Bencana</a></li>
-                                           <li class="dropdown">
-                                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                              Laporan Kehilangan Mangsa <span class="caret"></span>  </a>
-                                              <ul class="dropdown-menu" role="menu">
-                                              <li><a href="{{ url('LaporKehilangan') }}">Laporan Kehilangan Mangsa Bencana</a></li>
-                                              <li><a href="{{ url('#') }}">Semakan Status Mangsa Bencana</a></li>
-                                              <li><a href="{{ url('/#') }}">Maklumat Mangsa Bencana</a></li>
-                                            </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                               Pusat Pemindahan <span class="caret"></span>  </a>
-                                               <ul class="dropdown-menu" role="menu">
-                                               <li><a href="{{ url('/pusatPemindahan') }}">Senarai Pusat Pemindahan</a></li>
-                                               <li><a href="{{ url('/pusatPemindahan2') }}">Daftar Pusat Pemindahan</a></li>
-                                             </ul>
-                                             </li>
-
-                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                              Maklumat Mangsa Bencana <span class="caret"></span>  </a>
-                                                <ul class="dropdown-menu" role="menu">
-                                                <li><a href="{{ url('#') }}">Data Bencana</a></li>
-                                                <li><a href="{{ url('#') }}">Maklumat Mangsa Bencana</a></li>
-                                                <li><a href="{{ url('#') }}">Laporan Kehilangan Mangsa Bencana</a></li>
-                                              </ul>
-                                              </li>
-                                           {{-- <li><a href="{{ url('/PusatPemindahanU') }}">Pusat Pemindahan</a></li> --}}
-                                           <li><a href="{{ url('/#') }}">Statistik Bencana</a></li>
-
-                                           <unread></unread>
-                                       @endif
-                                   </ul>
-
-                    <!-- Right Side Of Navbar -->
+                  <!-- Left Side Of Navbar -->
+                  <ul class="nav navbar-nav navbar-left">
+                    @if(Auth::guest())
+                          <li><a href="{{ url('/notifikasi') }}"><span class="glyphicon glyphicon-map-marker"></span>Kawasan Bencana</a></li>
+                          <li><a href="{{ url('/infobencana') }}"><span class="glyphicon glyphicon-info-sign"></span>  Info Bencana</a></li>
+                          <li><a href="{{ url('/contact') }}"><span class="glyphicon glyphicon-envelope"> </span> Hubungi Kami</a></li>
+                  </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Log Masuk</a></li>
-                            <li><a href="{{ route('register') }}">Daftar Masuk</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                          <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span>  Log Masuk</a></li>
+                          <li><a href="{{ route('register') }}"><span class="glyphicon glyphicon-log-in"></span>  Daftar Masuk</a></li>
 
-                                <ul class="dropdown-menu" role="menu">
-                                     <li><a href="{{ url('profile') }}"><i class="fa fa-btn fa-user"></i>Profil</a></li>
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Log Keluar
-                                        </a>
+                          <!-- Authentication Links -->
+                    @elseif (Auth::user()->role === 'Admin')
+                          <li><a href="{{ url('/home') }}"> <span class="glyphicon glyphicon-home"></span></a></li>
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-bell"></span>Amaran Awal<span class="caret"></span>  </a>
+                            <ul class="dropdown-menu" role="menu">
+                          <li><a href="{{ url('AmaranBencana') }}"><span class="glyphicon glyphicon-pencil"></span>  Hebahan Bencana</a></li>
+                          <li><a href="{{ url('/noti') }}"><span class="glyphicon glyphicon-th-list"></span>  Notifikasi Bencana</a></li>
+                        </ul>
+                        </li>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-map-marker"></span>Kawasan Bencana  <span class="caret"></span>  </a>
+                          <ul class="dropdown-menu" role="menu">
+                          <li><a href="{{ url('KawasanBencana') }}"><span class="glyphicon glyphicon-pencil"></span>  Daftar Kawasan Benacana</a></li>
+                          <li><a href="{{ url('/notifikasi') }}"><span class="glyphicon glyphicon-th-list"></span>  Hebahan Kawasan Bencana</a></li>
+                        </ul>
+                        </li>
+
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-map-marker"></span>
+                           Pusat Pemindahan <span class="caret"></span>  </a>
+                           <ul class="dropdown-menu" role="menu">
+                           <li><a href="{{ url('/pusatPemindahan2') }}"><span class="glyphicon glyphicon-pencil"></span>  Daftar Pusat Pemindahan</a></li>
+                         </ul>
+                         </li>
+
+                         <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-folder-open"></span>
+                          Maklumat Mangsa <span class="caret"></span>  </a>
+                            <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/DataBencana') }}"> <span class="glyphicon glyphicon-pencil"></span> Data Bencana</a></li>
+                            <li><a href="{{ url('/maklumat') }}"><span class="glyphicon glyphicon-th-list"></span>  Maklumat Mangsa Bencana</a></li>
+                            <li><a href="{{ url('/LaporKehilangan2/lapor') }}"><span class="glyphicon glyphicon-th-list"></span>  Laporan Kehilangan Mangsa Bencana</a></li>
+                          </ul>
+                          </li>
+
+                          <li><a href="{{ url('/#') }}"><span class="glyphicon glyphicon-signal"></span>  Statistik</a></li>
+
+                          <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }} <span class="caret"></span>
+                                  </a>
+
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('/profile') }}"> <span class="glyphicon glyphicon-user"></span>  Profile</a></li>
+                                      <li>
+                                          <a href="{{ route('logout') }}"
+                                              onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();"><span class="glyphicon glyphicon-log-out"></span>
+                                              Log Keluar
+                                          </a>
+
+                                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                              {{ csrf_field() }}
+                                          </form>
+                                      </li>
+                                  </ul>
+                              </li>
+                    @elseif (Auth::user()->role === 'OrangAwam')
+                      <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home"></span> Laman Utama</a></li>
+
+                      <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">  <span class="glyphicon glyphicon-bell"></span>
+                         Amaran Bencana  <span class="caret"></span>  </a>
+                         <ul class="dropdown-menu" role="menu">
+                         <li><a href="{{ url('/noti') }}"> <span class="glyphicon glyphicon-th-list"></span>  Notifikasi Bencana</a></li>
+                       </ul>
+                       </li>
+
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-folder-open"></span>
+                           Laporan Kehilangan <span class="caret"></span>  </a>
+                           <ul class="dropdown-menu" role="menu">
+                           <li><a href="{{ url('LaporKehilangan') }}"><span class="glyphicon glyphicon-pencil"></span>  Laporan Kehilangan Mangsa Bencana</a></li>
+                           <li><a href="{{ url('/semakan') }}"><span class="glyphicon glyphicon-th-list"></span>  Semakan Status Mangsa Bencana</a></li>
+                           <li><a href="{{ url('/maklumat') }}"><span class="glyphicon glyphicon-th-list"></span>  Maklumat Mangsa Bencana</a></li>
+                         </ul>
+                         </li>
+
+                         <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-map-marker"></span>
+                            Pusat Pemindahan <span class="caret"></span>  </a>
+                            <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/pusatPemindahan') }}"><span class="glyphicon glyphicon-signal"></span>  Senarai Pusat Pemindahan</a></li>
+                          </ul>
+                          </li>
+
+                          <li><a href="{{ url('/#') }}"><span class="glyphicon glyphicon-signal"></span>  Statistik</a></li>
+
+                    <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-user"></span>
+                              {{ Auth::user()->name }} <span class="caret"></span>
+                          </a>
+
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/profile') }}">  <span class="glyphicon glyphicon-user"></span>  Profile</a></li>
+                              <li>
+                                  <a href="{{ route('logout') }}"
+                                      onclick="event.preventDefault();
+                                               document.getElementById('logout-form').submit();">
+                                    <span class="glyphicon glyphicon-log-out"></span>  Log Keluar
+
+                                  </a>
+
+                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                      {{ csrf_field() }}
+                                  </form>
+                              </li>
+                          </ul>
+                      </li>
+
+                    @else
+                    @endif
+
                     </ul>
                 </div>
             </div>

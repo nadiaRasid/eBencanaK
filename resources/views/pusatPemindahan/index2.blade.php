@@ -56,8 +56,8 @@
 
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-12 col-md-12 text-right">
-                              <a href="{{ action('PusatPemindahanUsController@index2') }}" class="btn btn-default">Cancel</a>
-                                <button type="submit" class="btn btn-success">Save</button>
+                              <a href="{{ action('PusatPemindahanUsController@index2') }}" class="btn btn-default">Batal</a>
+                                <button type="submit" class="btn btn-success">Simpan</button>
                         </div>
                     </div>
                                       </form>

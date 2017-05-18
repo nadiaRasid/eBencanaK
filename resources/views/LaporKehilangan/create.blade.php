@@ -16,8 +16,7 @@
               <th>#</th>
               <th width="15%">Jenis Bencana</th>
               <th width="15%">Nama Mangsa</th>
-              <th width="15%">Alamat Mangsa</th>
-              <th width="15%">No.Tel Mangsa</th>
+              <th width="15%">No Kad Pengenalan</th>
               <th width="15%">Tarikh Hilang</th>
               <th width="15%">Action</th>
             </tr>
@@ -29,8 +28,7 @@
           <td >{{$lapor_kehilangans->firstItem() + $i }}</td>
           <td>{{ $LaporKehilangan->jenisBencana }}</td>
           <td>{{ $LaporKehilangan->namaMangsa }}</td>
-          <td>{{ $LaporKehilangan->alamatMangsa }}</td>
-          <td>{{ $LaporKehilangan->phoneMangsa }}</td>
+          <td>{{ $LaporKehilangan->ic }}</td>
           <td>{{ $LaporKehilangan->tarikhHilang }}</td>
           <td>
           @if( $LaporKehilangan->user_id == Auth::user()->id)

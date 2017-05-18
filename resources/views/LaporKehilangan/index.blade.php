@@ -27,6 +27,27 @@
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
+                            <strong>No Kad Pengenalan(Jika ada):</strong>
+                            {!! Form::text('ic', null, array('placeholder' => 'No Kad Pengenalan','class' => 'form-control')) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Umur (Anggaran):</strong>
+                            {!! Form::text('umur', null, array('placeholder' => 'Umur','class' => 'form-control')) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Bangsa:</strong>
+                            {{ Form::select('bangsa', ['Pilih Bencana' => 'Pilih Bangsa','Melayu' => 'Melayu', 'Cina' => 'Cina', 'India' => 'India','Lain-lain' => 'Lain-lain'], null, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
                             <strong>Alamat Mangsa:</strong>
                             {!! Form::textarea('alamatMangsa', null, array('placeholder' => 'Alamat Mangsa','class' => 'form-control')) !!}
 
@@ -51,8 +72,8 @@
 
                       <div class="form-group">
                           <div class="col-xs-12 col-sm-12 col-md-12 text-right">
-                              <a href="{{ action('LaporKehilangansController@index') }}" class="btn btn-default">Cancel</a>
-                                  <button type="submit" class="btn btn-success">Save</button>
+                              <a href="{{ action('LaporKehilangansController@index') }}" class="btn btn-default">Batal</a>
+                                  <button type="submit" class="btn btn-success">Simpan</button>
                                               </div>
                                           </div>
                                       </form>

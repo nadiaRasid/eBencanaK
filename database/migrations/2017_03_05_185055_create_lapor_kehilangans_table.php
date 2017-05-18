@@ -17,9 +17,14 @@ class CreateLaporKehilangansTable extends Migration
         $table->increments('id');
         $table->string('jenisBencana');
         $table->string('namaMangsa');
+        $table->string('ic');
+        $table->string('umur');
+        $table->string('bangsa');
         $table->string('alamatMangsa');
         $table->string('phoneMangsa');
         $table->date('tarikhHilang');
+        $table->String('status')->default('Sedang Diproses')->nullable();
+        $table->String('namaPusat')->default('Tiada')->nullable();
         $table->integer('user_id')->unsigned();;
         $table->timestamps();
 

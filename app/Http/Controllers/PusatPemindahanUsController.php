@@ -17,8 +17,9 @@ class PusatPemindahanUsController extends Controller
      */
     public function index()
     {
-      $searchResults =Input::get('search');
+      $searchResults = Input::get('search');
       $pusat_pemindahans = PusatPemindahan::where('jenisBencana','like','%'.$searchResults.'%')->paginate(5);
+
       return view('pusatPemindahan.index', compact('pusat_pemindahans'));
 
     }

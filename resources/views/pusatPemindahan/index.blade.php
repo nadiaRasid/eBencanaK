@@ -9,7 +9,7 @@
 <div class="panel-body">
   <form class="form-inline my-10 my-lg-5 pull-right" method="get" action="{{ url('pusatPemindahan/index') }}">
               <input class="form-control mr-sm-2" type="text" placeholder="Jenis Bencana" name="search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <span class="glyphicon glyphicon-search"></span></button>
           </form>
   <div class="row">
     <div class="col-md-12">

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\LaporKehilangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+
 
 class LaporKehilangansController extends Controller
 {
@@ -14,6 +17,7 @@ class LaporKehilangansController extends Controller
      */
     public function index()
     {
+      //  $lapor_kehilangans = LaporKehilangan::with('user')->paginate(5);
         return view('LaporKehilangan.index', compact('lapor_kehilangans'));
     }
 
@@ -24,30 +28,45 @@ class LaporKehilangansController extends Controller
      */
     public function create()
     {
-      $lapor_kehilangans = LaporKehilangan::with('user')->paginate(5);
+      $lapor_kehilangans = LaporKehilangan::with('user')->where('user_id', Auth::user()->id)->paginate(5);
+      // dd($lapor_kehilangans);
           return view('LaporKehilangan.create', compact('lapor_kehilangans'));
+          //$pendaftarans = Pendaftaran::with('user')->where('user_id', Auth::user()->id)->paginate(5);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function semakan()
+    {
+      $lapor_kehilangans = LaporKehilangan::with('user')->where('user_id', Auth::user()->id)->paginate(5);
+          return view('LaporKehilangan.semakan', compact('lapor_kehilangans'));
+    }
+
+
+
     public function store(Request $request)
     {
       $this->validate($request, ['jenisBencana' => 'required',   ]);
       $this->validate($request, ['namaMangsa'=> 'required',   ]);
+      $this->validate($request, ['ic' => 'required',  ]);
+      $this->validate($request, ['umur'=> 'required',   ]);
+      $this->validate($request, ['bangsa'=> 'required',   ]);
       $this->validate($request, [ 'alamatMangsa'=> 'required',   ]);
       $this->validate($request, ['phoneMangsa'=> 'required',   ]);
       $this->validate($request, [ 'tarikhHilang'=> 'required',   ]);
+      $this->validate($request, [ 'status']);
+      $this->validate($request, [ 'namaPusat']);
 
     $LaporKehilangan= new LaporKehilangan;
     $LaporKehilangan->jenisBencana = $request->jenisBencana;
     $LaporKehilangan->namaMangsa = $request->namaMangsa;
+    $LaporKehilangan->ic = $request->ic;
+    $LaporKehilangan->umur = $request->umur;
+    $LaporKehilangan->bangsa = $request->bangsa;
     $LaporKehilangan->alamatMangsa = $request->alamatMangsa;
     $LaporKehilangan->phoneMangsa = $request->phoneMangsa;
     $LaporKehilangan->tarikhHilang = $request->tarikhHilang;
+    // $LaporKehilangan->status = $request->status;
+    $LaporKehilangan->namaPusat = $request->namaPusat;
+
     $LaporKehilangan->user_id = Auth::user()->id;
     $LaporKehilangan->save();
 
@@ -74,6 +93,7 @@ class LaporKehilangansController extends Controller
      */
     public function edit($id)
     {
+      // dd($id);
       $LaporKehilangan = LaporKehilangan::findOrFail($id);
       return view('LaporKehilangan.edit', compact('LaporKehilangan'));
     }
@@ -89,20 +109,56 @@ class LaporKehilangansController extends Controller
     {
       $this->validate($request, ['jenisBencana' => 'required',   ]);
       $this->validate($request, ['namaMangsa'=> 'required',   ]);
-      $this->validate($request, [ 'alamatMangsa'=> 'required',   ]);
+      $this->validate($request, ['ic'=> 'required',   ]);
+      $this->validate($request, ['umur'=> 'required',   ]);
+      $this->validate($request, ['bangsa'=> 'required',   ]);
+      $this->validate($request, ['alamatMangsa'=> 'required',   ]);
       $this->validate($request, ['phoneMangsa'=> 'required',   ]);
-      $this->validate($request, [ 'tarikhHilang'=> 'required',   ]);
+      $this->validate($request, ['tarikhHilang'=> 'required',   ]);
 
       $LaporKehilangan = LaporKehilangan::findOrFail($id);
       $LaporKehilangan->jenisBencana = $request->jenisBencana;
       $LaporKehilangan->namaMangsa = $request->namaMangsa;
+      $LaporKehilangan->ic = $request->ic;
+      $LaporKehilangan->umur = $request->umur;
+      $LaporKehilangan->bangsa = $request->bangsa;
       $LaporKehilangan->alamatMangsa = $request->alamatMangsa;
       $LaporKehilangan->phoneMangsa = $request->phoneMangsa;
       $LaporKehilangan->tarikhHilang = $request->tarikhHilang;
       $LaporKehilangan->user_id = Auth::user()->id;
       $LaporKehilangan->save();
 
-      return redirect()->action('LaporKehilangansController@create')->withMessage('Laporan Kehilangan Mangsa telah dikemaskini');
+   return redirect()->action('LaporKehilangansController@create')->withMessage('Data Mangsa Bencana telah dikemaskini');
+
+
+
+}
+public function lapor()
+{
+  $searchResults =Input::get('search');
+  $lapor_kehilangans = LaporKehilangan::with('user')->where('jenisBencana','like','%'.$searchResults.'%')->paginate(7);
+  return view('LaporKehilangan.lapor', compact('lapor_kehilangans'));
+}
+
+    public function edit2($id)
+    {
+      $LaporKehilangan = LaporKehilangan::findOrFail($id);
+      return view('LaporKehilangan.edit2', compact('LaporKehilangan'));
+    }
+
+
+    public function simpan(Request $request, $id)
+    {
+
+      $this->validate($request, [ 'status']);
+      $this->validate($request, [ 'namaPusat']);
+
+      $LaporKehilangan = LaporKehilangan::findOrFail($id);
+      $LaporKehilangan->status = $request->status;
+      $LaporKehilangan->namaPusat = $request->namaPusat;
+      $LaporKehilangan->save();
+
+      return redirect()->action('LaporKehilangansController@lapor')->withMessage('Laporan Kehilangan Mangsa telah dikemaskini');
     }
 
     /**

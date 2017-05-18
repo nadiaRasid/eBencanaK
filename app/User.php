@@ -4,6 +4,9 @@ namespace App;
 use App\Pengguna;
 use App\LaporKehilangan;
 use App\pusatPemindahan;
+use App\DataBencana;
+use App\AmaranBencana;
+use App\KawasanBencana;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -39,5 +42,19 @@ class User extends Authenticatable
 
     public function pusatPemindahan() {
         return $this->hasMany(pusatPemindahan::class, 'user_id');
+    }
+    public function DataBencana() {
+        return $this->hasMany(DataBencana::class, 'user_id');
+    }
+
+    public function AmaranBencana() {
+        return $this->hasMany(AmaranBencana::class, 'user_id');
+    }
+
+    public function roleCheck($role = null){
+        if ($role){
+            return $this->role == $role; //userRole kena sama dengan dalam database
+        }
+        return $this->role;
     }
 }
