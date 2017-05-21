@@ -5,6 +5,8 @@ use App\User;
 use App\Pengguna;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class PenggunasController extends Controller
 {
@@ -74,14 +76,18 @@ class PenggunasController extends Controller
     {
       $user = User::findOrFail($id);
       $pengguna = Pengguna::where('user_id', $id)->first();
-
+              if ($request->hasFile('gambar'))
+              {
+                  $image = '/images/profiles' . time() . '.' . $request->gambar->getClientOriginalExtension();
+                  $request->gambar->move(public_path('images/'), $image);
+                  $pengguna->gambar = $image;
+              }
         $user->name = $request->name;
         $user->email = $request->email;
 
         $pengguna->nama = $request->nama;
         $pengguna->telefon = $request->telefon;
         $pengguna->alamat = $request->alamat;
-        $pengguna->gambar = $request->gambar;
 
         $user->save();
         $pengguna->save();

@@ -47,21 +47,26 @@
                                     <label class="col-md-2 control-label">Alamat</label>
 
                                     <div class="col-md-10">
-                                                              <textarea class="form-control" name="alamat" placeholder="Alamat" rows="6"
-                                                                        value="{{ $pengguna->alamat }}" maxlength="100"></textarea>
-                                                              <p class="text-muted">Maxmimum character is 100</p>
-                                                              @if($errors->has('alamat'))
-                                                                  <span class="help-block">
-                                                                      <strong>{{ $errors->first('alamat') }}</strong>
-                                                                  </span>
-                                                              @endif
+                                      <input type="textarea" class="form-control" name="alamat" placeholder="Alamat" value="{{ $pengguna->alamat }}"></input>
+
                                                           </div>
                                                       </div>
 
-                                <div class="form-group"><label class="col-sm-2 control-label">Gambar Profil:</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="gambar" placeholder="" value="{{ $pengguna->gambar }}"></div>
-                                </div>
+                                                      <div class="form-group">
+                                              <label for="gambar" class="col-md-2 control-label">Gambar Profil</label>
+                                                  <div class="col-md-10">
+                                                  <input type="file" name="gambar" id="gambar" class="hide">
+                                                      <label for="gambar" style="width: 300px">
+                                                        @if($pengguna->gambar == null)
+
+                                                           <td><img id="gambar_image" src="{{ asset('img/image-placeholder2.jpg') }}" width="100%"/></td>
+
+                                                          @else
+
+                                                              <img class="image-placeholder" id="gambar_image" src="{{asset("$pengguna->gambar") }}" width="100%"/>
+                                                          @endif
+                                                  </div>
+                                          </div>
 
                                 <div class="form-group">
                                     <label class="col-md-2 control-label"></label>
@@ -79,4 +84,6 @@
                   </div>
                 </div>
               </div>
-@endsection
+      @endsection
+            @section('script')
+            @endsection

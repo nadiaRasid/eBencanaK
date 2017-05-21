@@ -21,7 +21,7 @@ class CreateKawasanBencanasTable extends Migration
           $table->string('punca');
           $table->integer('noPindah');
           $table->integer('noKorban');
-
+          $table->boolean("is_published")->default(false);
           $table->integer('user_id')->unsigned();;
           $table->timestamps();
 

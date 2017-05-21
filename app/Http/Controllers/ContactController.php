@@ -24,6 +24,12 @@ class ContactController extends Controller
         //  return view('welcome');
         //  //return view('AmaranBencana.index', compact('amaran_bencanas'));
      }
+
+     public function noti()
+     {
+       $amaran_bencanas = AmaranBencana::with('user')->where('is_published', true)->paginate(5);
+           return view('AmaranBencana.noti', compact('amaran_bencanas'));
+     }
     public function infobencana()
     {
         return view('infobencana');

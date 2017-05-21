@@ -18,10 +18,11 @@
           <thead>
             <tr>
               <th>#</th>
-              <th width="25%">Nama Kawasan </th>
-              <th width="25%">Jenis Bencana</th>
-              <th width="25%">Tarikh Berlaku</th>
-              <th width="25%">Action</th>
+              <th width="15%">Nama Kawasan </th>
+              <th width="15%">Jenis Bencana</th>
+              <th width="15%">Tarikh Berlaku</th>
+              <th width="15%">Papar</th>
+              <th width="25%">Tindakan</th>
             </tr>
           </thead>
           <tbody pull-{right}>
@@ -32,11 +33,14 @@
           <td>{{ $KawasanBencana->namaKawasan }}</td>
           <td>{{ $KawasanBencana->jenisBencana }}</td>
           <td>{{ $KawasanBencana->tarikhBerlaku }}</td>
-
+          <td>{{ $KawasanBencana->is_published == 1 ? 'Ya' : 'Tidak' }}</td>
           <td>
           @if( $KawasanBencana->user_id == Auth::user()->id)
+          <a <span   class="btn btn-warning btn-sm"href="{{ action('KawasanBencanasController@published', $KawasanBencana) }}">{{ $KawasanBencana->is_published == 1 ? 'Tidak Papar' : 'Papar' }}</a>
+          &nbsp
           <a href="{{ action('KawasanBencanasController@edit', $KawasanBencana->id) }}"
-          class="btn btn-primary btn-sm">Edit</a>
+          class="btn btn-primary btn-sm">Maklumat</a>
+          &nbsp
           <a href="{{ action('KawasanBencanasController@destroy',$KawasanBencana->id) }}"
             class="btn btn-danger btn-sm" id="confirm-modal">Padam</a>
           @endif

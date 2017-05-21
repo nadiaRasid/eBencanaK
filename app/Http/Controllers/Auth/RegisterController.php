@@ -79,4 +79,37 @@ class RegisterController extends Controller
 
         return $user;
     }
+    // protected function create(array $data)
+    // {
+    //     $user = User::create([
+    //         'no_matrik'     => $data['no_matrik'],
+    //         'username'      => $data['username'],
+    //         'email'         => $data['email'],
+    //         'password'      => bcrypt($data['password']),
+    //         'userRole'      => $data['role'] == 'author' ? 'pengarang' : 'pembaca',
+    //     ]);
+    //
+    //     if ($data['role'] == 'Admin') {
+    //         $user->pengarang()->create([
+    //           'user_id'     => $user->id,
+    //           'nama'        => null,
+    //           'telefon'     => null,
+    //           'fakulti'     => null,
+    //           'persatuan'   => null,
+    //           'jawatan'     => null,
+    //         ]);
+    //
+    //     } else {
+    //         $user->pembaca()->create([
+    //           'user_id'     => $user->id,
+    //           'nama'        => null,
+    //           'telefon'     => null,
+    //           'fakulti'     => null,
+    //           'jabatan'     => null,
+    //           'persatuan'   => null,
+    //         ]);
+    //     }
+    //
+    //    return $user;
+    // }
 }

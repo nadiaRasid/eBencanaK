@@ -89,7 +89,7 @@
                           </ul>
                           </li>
 
-                          <li><a href="{{ url('/#') }}"><span class="glyphicon glyphicon-signal"></span>  Statistik</a></li>
+                          <li><a href="{{ url('/statistic2') }}"><span class="glyphicon glyphicon-signal"></span>  Statistik</a></li>
 
                           <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -97,7 +97,7 @@
                                   </a>
 
                                   <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('/profile') }}"> <span class="glyphicon glyphicon-user"></span>  Profile</a></li>
+
                                       <li>
                                           <a href="{{ route('logout') }}"
                                               onclick="event.preventDefault();
@@ -140,7 +140,7 @@
                           </ul>
                           </li>
 
-                          <li><a href="{{ url('/#') }}"><span class="glyphicon glyphicon-signal"></span>  Statistik</a></li>
+                          <li><a href="{{ url('/statistic2') }}"><span class="glyphicon glyphicon-signal"></span>  Statistik</a></li>
 
                     <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-user"></span>
@@ -214,5 +214,7 @@
            $('#destroy-modal').modal({ show: true });
        });
     </script>
+    <script src="{{ asset('js/add-image.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>

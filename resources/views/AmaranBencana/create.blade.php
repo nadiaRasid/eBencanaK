@@ -18,8 +18,8 @@
               {{-- <th width="20%">Sumber</th> --}}
               <th width="15%">Tarikh Laporan</th>
               <th width="15%">Tarikh Kemaskini</th>
-              <th width="15%">Published</th>
-              <th width="25%">Action</th>
+              <th width="15%">Papar</th>
+              <th width="25%">Tindakan</th>
             </tr>
           </thead>
           <tbody pull-{right}>

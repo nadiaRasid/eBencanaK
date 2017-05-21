@@ -49,8 +49,10 @@
 			<section id="banner">
 				<div class="inner">
           <ul class="actions">
-						<li><a href="#" class="image fit"><img src="images/logo1.png" alt=""  height="100" width="40" /></a></li>
-						<li><a href="#" class="image"><img src="images/logo2.png" alt=""  height="120" width="200" /></a></li>
+						<li><a href="#" class="image"><img src="images/logo1.png" alt=""  height="150" width="270" /></a></li>
+						<li><a href="#" class="image"><img src="images/logo2.png" alt=""  height="150" width="150" /></a></li>
+						{{-- <li><a href="#" class="image fit"><img src="images/logo1.png" alt=""  height="100" width="40" /></a></li>
+						<li><a href="#" class="image"><img src="images/logo2.png" alt=""  height="120" width="200" /></a></li> --}}
 					</ul>
 					<h3>Sistem Maklumat Pengurusan Bencana</h3>
 					<p> @ eBencana Kemaman</p>
@@ -62,15 +64,15 @@
 						<div class="8u">
 							<section>
 								<h2 style="color:red;">PERSEDIAAN BENCANA</h2>
-								<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+								<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
 								<p>Bencana alam perlu perhatian oleh sebab ia mengancam kehidupan dan ekonomi penduduk negara ini.
 									 Kenyataan ini mendorong kita untuk mempersiapkan diri, keluarga, dan komuniti di sekitar kita.
 									 Persediaan diri diharapkan pada akhirnya mampu untuk menjangka ancaman bencana dan mengurangkan korban jiwa,
 									 kecederaan, mahupun kerosakan infrastruktur.
 									 Bermula dari dalam diri sendiri, kita dapat membantu keluarga dan komuniti. </p>
-									 <p>Berikut beberapa jenis bencana: <p>
+									 <p>&nbsp;&nbsp;&nbsp;&nbsp;	Berikut beberapa jenis bencana: <p>
 										 <p>
-											 <ol>
+											 <ol>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<li>Gempa Bumi</li>
 													<li>Tsunami</li>
 													<li>Banjir </li>
@@ -97,6 +99,7 @@
 											<td>  <p><strong> Sumber : {{ $AmaranBencana->sumber }}</strong>
 											<i style="color:black;font-size:16px;">Tarikh Laporan : {{ $AmaranBencana->tarikhLaporan}}</i></p></td>
 										</tr>
+
 										<?php $i++ ?>
 									@empty
 										<tr>
@@ -106,9 +109,9 @@
 								</tbody>
 
 								<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-									<p>{{ $amaran_bencanas->links() }} <a href="{{ action('AmaranBencanasController@noti', $AmaranBencana->id) }}"
-									class="btn btn-info">Berita</a></p>
+  								{{ $amaran_bencanas->links() }}
+									{{-- <a href="{{ action('AmaranBencanasController@noti', $AmaranBencana->id) }}"
+								 class="btn btn-info">Berita</a> --}}
 										</div>
 							</section>
 							<hr />
@@ -126,21 +129,21 @@
         <div class="row">
           <div class="4u">
             <section class="special box">
-              <i><a href="#" class="image fit"><img src="images/logo1.png" /></a></i>
-              <a href="http://portalbencana.ndcc.gov.my">Laman Web Portal Becana Seluruh Malaysia</a>
+              <i><a href="#" class="image"><img src="images/logo1.png"  height="150" width="270"/></a></i>
+              <a href="http://portalbencana.ndcc.gov.my"><li>Laman Web Portal Becana Seluruh Malaysia</li></a>
             </section>
           </div>
           <div class="4u">
 						<section class="special box">
-              <i><a href="#" class="image fit"><img src="images/logo2.png" height="160"/></a></i>
-              <a href="http://etindakan.terengganu.gov.my/">Portal Kenyataan Banjir Negeri Terengganu</a>
+              <i><a href="#" class="image"><img src="images/logo2.png"  height="180" width="190"/></a></i>
+           	<a href="http://etindakan.terengganu.gov.my/"><li>Portal Kenyataan Banjir Negeri Terengganu</li></a>
             </section>
 
           </div>
           <div class="4u">
 						<section class="special box">
-              <i><a href="#" class="image fit"><img src="images/logo1.png" /></a></i>
-              <a href="http://www.met.gov.my">Laman Web Jabatan Meteorologi Malaysia</a>
+              <i><a href="#" class="image"><img src="images/logo1.png"  height="150" width="270" /></a></i>
+              <a href="http://www.met.gov.my"><li>Laman Web Jabatan Meteorologi Malaysia</li></a>
             </section>
           </div>
         </div>
@@ -154,7 +157,7 @@
 						<div class="6u">
 							<div class="row collapse-at-2">
 								<div class="6u">
-                  <div id="googleMap" style="width:650px;height:400px;background:blue"></div>
+                  <div id="googleMap" style="width:630px;height:400px;background:blue"></div>
 								</div>
 								<div class="6u">
 
@@ -190,7 +193,8 @@
   function myMap() {
   var mapProp= {
       center:new google.maps.LatLng(4.2403465,103.4190884),
-      zoom:5,
+			zoom: 18,
+
   };
   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
   }

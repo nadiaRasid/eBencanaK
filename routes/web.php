@@ -17,6 +17,7 @@ Route::get('/', 'ContactController@welcome');
 Route::get('/infobencana', 'ContactController@infobencana');
 Route::get('/contact', 'ContactController@contact');
 Route::get('/notifikasi', 'KawasanBencana@notifikasi');
+Route::get('/noti', 'ContactController@noti');
 
 Auth::routes();
 //admin
@@ -58,6 +59,7 @@ Route::group(['middleware' =>  ['auth', 'Admin']], function() {
       Route::get('/KawasanBencana/{KawasanBencana}/edit', 'KawasanBencanasController@edit');
       Route::patch('/KawasanBencana/{KawasanBencana}', 'KawasanBencanasController@update');
       Route::delete('/KawasanBencana/{KawasanBencana}/delete', 'KawasanBencanasController@destroy');
+      Route::get('/KawasanBencana/{KawasanBencana}/published', 'KawasanBencanasController@published');
 
       //LaporKehilangan
       Route::get('/LaporKehilangan2/lapor', 'LaporKehilangansController@lapor');
@@ -93,10 +95,15 @@ Route::group(['before' => 'Admin|OrangAwam'], function() {
   //DataBencana
   Route::get('/maklumat', 'DataBencanasController@maklumat');
   //AmaranBencana
-  Route::get('/noti', 'AmaranBencanasController@noti');
+  //Route::get('/noti', 'AmaranBencanasController@noti');
   Route::get('/AmaranBencana/{AmaranBencana}/details', 'AmaranBencanasController@details');
   //KawasanBencana
   Route::get('/notifikasi', 'KawasanBencanasController@notifikasi');
   Route::get('/KawasanBencana/{KawasanBencana}/details', 'KawasanBencanasController@details');
+
+  //Statistik
+  // Route::get('/',array('as'=>'chart.statistik','KawasanBencana'=>'KawasanBencanasController@pieChart'));
+  Route::get('/statistic', 'KawasanBencanasController@pieChart');
+  Route::get('/statistic2', 'KawasanBencanasController@barChart');
 
 });

@@ -13,12 +13,25 @@
 </div>
 <div class="panel-body">
   <div class="row">
-    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
+    @foreach ($penggunas as $pengguna)
+  <div class="col-md-3 col-lg-3 " align="center">
+            @if($pengguna->gambar == null)
 
+               <td><img src="{{ asset('img/image-placeholder2.jpg') }}" width="100%"/></td>
+
+              @else
+
+                <label for="fileUpload" style="width: 500px">
+                  <img class="image-placeholder" src="{{ $pengguna->gambar }}" width="100%"/>
+                </label>
+
+
+              @endif
+  </div>
     <div class=" col-md-9 col-lg-9 ">
       <table class="table table-user-information">
         <tbody>
-          @foreach ($penggunas as $pengguna)
+
           <tr>
             <td>Nama Penuh: </td>
             <td>{{ $pengguna->user->name }}</td>
