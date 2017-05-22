@@ -18,8 +18,8 @@ class PusatPemindahanUsController extends Controller
     public function index()
     {
       $searchResults = Input::get('search');
-      $pusat_pemindahans = PusatPemindahan::where('jenisBencana','like','%'.$searchResults.'%')->paginate(5);
-
+      $pusat_pemindahans = PusatPemindahan::where('jenisBencana','like','%'.$searchResults.'%')
+      ->orderBy('tarikhBuka', 'DESC')->paginate(5);
       return view('pusatPemindahan.index', compact('pusat_pemindahans'));
 
     }
@@ -38,7 +38,8 @@ class PusatPemindahanUsController extends Controller
     public function create()
     {
         $searchResults =Input::get('search');
-        $pusat_pemindahans = PusatPemindahan::where('jenisBencana','like','%'.$searchResults.'%')->paginate(5);
+        $pusat_pemindahans = PusatPemindahan::where('jenisBencana','like','%'.$searchResults.'%')
+        ->orderBy('tarikhBuka', 'DESC')->paginate(5);
         return view('pusatPemindahan.create', compact('pusat_pemindahans'));
 
     }

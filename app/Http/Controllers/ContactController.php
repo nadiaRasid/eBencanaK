@@ -19,7 +19,8 @@ class ContactController extends Controller
 
      public function welcome()
      {
-            $amaran_bencanas = AmaranBencana::with('user')->where('is_published', true)->paginate(3);
+            $amaran_bencanas = AmaranBencana::with('user')->where('is_published', true)
+              ->orderBy('tarikhLaporan', 'DESC')->paginate(3);
            return view('welcome', compact('amaran_bencanas'));
         //  return view('welcome');
         //  //return view('AmaranBencana.index', compact('amaran_bencanas'));

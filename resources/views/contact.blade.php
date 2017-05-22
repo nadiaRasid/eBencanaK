@@ -1,26 +1,42 @@
 
 <html>
-	<head>
-		<title>eBencana Kemaman</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-xlarge.css" />
-		</noscript>
-	</head>
+<head>
+	<title>eBencana Kemaman</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=9">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/skel.min.js"></script>
+	<script src="js/skel-layers.min.js"></script>
+	<script src="js/init.js"></script>
+	<noscript>
+		<link rel="stylesheet" href="css/skel.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/style-xlarge.css" />
+	</noscript>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<style>
+	.mySlides {display:none;}
+	.w3-row-padding, .w3-row-padding>.w3-half, .w3-row-padding>.w3-third, .w3-row-padding>.w3-twothird, .w3-row-padding>.w3-threequarter, .w3-row-padding>.w3-quarter, .w3-row-padding>.w3-col {
+			padding: 8px;
+	}
+	</style>
+</head>
 	<body id="top">
 
 		<!-- Header -->
 			<header id="header" class="skel-layers-fixed">
-				<h1><a href="#">eBencana Kemaman</a></h1>
+				<h2><a href="#">eBencana Kemaman</a></h2>
 				<nav id="nav">
 					<ul>
 						<li><a href="{{ url('/') }}">Halaman Utama</a></li>
@@ -41,55 +57,56 @@
 				</nav>
 			</header>
 
+			<div id="googleMap" style="width:1430px;height:350px;background:blue"></div>
+			<h3 class="w3-center">Hubungi Kami</h3>
+			<div class="w3-content" style="max-width:800px;position:relative">
+				<p>Untuk sebarang pertanyaan mengenai Sistem eBencana Kemaman atau hal-hal berkaitan bencana sila hubungi:</p>
+											<ul class="icons">
+												<li><a href="#" class="icon fa fa-institution"><span class="p"> &nbsp; Pejabat Daerah and Tanah Kemaman, &nbsp;  Kampung Gong Limau, 24000 Chukai, Terengganu, Malaysia</span></a></li>
+												<li><a href="#" class="icon fa-phone"><span class="p"> &nbsp; +609-8591616</span></a></li>
+												<li>&nbsp;</li>
+												<li><a href="#" class="icon fa fa-envelope"><span class="p">  &nbsp;upmn@terengganu.gov.my</span></a></li>
+											</ul>
+										</div>
 		<!-- Footer -->
-			<footer id="footer">
-				<div class="container">
-					<div class="row double">
-						<div class="6u">
-							<div class="row collapse-at-2">
-								<div class="6u">
-                  <div id="googleMap" style="width:650px;height:400px;background:blue"></div>
-								</div>
-								<div class="6u">
 
-								</div>
-							</div>
-						</div>
-						<div class="6u">
-							<h2>Hubungi Kami</h2>
-							<p>Untuk sebarang pertanyaan mengenai Sistem eBencana Kemaman atau hal-hal berkaitan bencana silah hubungi:</p>
+			<footer class="w3-container w3-indigo w3-padding-16">
+			<p>&copy; eBencana Kemaman. Hak cipta terpelihara 2017</p>
+		</footer>
+			<script>
+			var blink_speed = 1000; var t = setInterval(function () {
+				var ele = document.getElementById('blinker');
+				 ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden'); }, blink_speed);
 
-              <ul class="icons">
-                <li><a href="#" class="icon fa fa-institution"><span class="p"> &nbsp; Pejabat Daerah and Tanah Kemaman 24000 Kemaman Terengganu</span></a></li>
-								<li><a href="#" class="icon fa-phone"><span class="p"> &nbsp; +609-8591616</span></a></li>
-                <li>&nbsp;</li>
-								<li><a href="#" class="icon fa fa-envelope"><span class="p">  &nbsp;upmn@terengganu.gov.my</span></a></li>
-							</ul>
-							<ul class="icons">
-								<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
-							</ul>
-						</div>
-					</div>
-					<ul class="copyright">
-						<li>&copy; eBencana Kemaman 2017</li>
-					</ul>
-				</div>
-			</footer>
+			</script>
+			<script>
+			var slideIndex = 0;
+			carousel();
 
-  <script>
-  function myMap() {
-  var mapProp= {
-      center:new google.maps.LatLng(4.1902321,103.4367274),
-      zoom:5,
-  };
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-  }
-  </script>
+			function carousel() {
+					var i;
+					var x = document.getElementsByClassName("mySlides");
+					for (i = 0; i < x.length; i++) {
+						x[i].style.display = "none";
+					}
+					slideIndex++;
+					if (slideIndex > x.length) {slideIndex = 1}
+					x[slideIndex-1].style.display = "block";
+					setTimeout(carousel, 2000);
+			}
+			</script>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNmjZtKAbfJK_VOE15dAPG9pM91G_azSg&callback=myMap"></script>
-</body>
-</html>
+		<script>
+		function myMap() {
+		var mapProp= {
+			center:new google.maps.LatLng(4.2403465,103.4190884),
+			zoom: 18,
+
+		};
+		var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+		}
+		</script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNmjZtKAbfJK_VOE15dAPG9pM91G_azSg&callback=myMap"></script>
+		</body>
+		</html>

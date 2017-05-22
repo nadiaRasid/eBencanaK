@@ -12,16 +12,36 @@
         </div>
     </div>
 </div>
-<div class="container text-center">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+<div class="container">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+<div class="panel panel-info" style="margin-top:50px">
+<div class="panel-heading">
+  <h3 class="panel-title">{{ Auth::user()->name }}<p class="pull-right">{{ Auth::user()->created_at }}</p></h3>
+</div>
+<div class="panel-body">
+  <div class="row">
 
-          <h4><font color="red">{{ Auth::user()->name }} </font><font color="blue"> Anda telah berjaya log masuk!</h4>
-
-
-            </div>
-        </div>
+    <div class=" col-md-9 col-lg-9 ">
+      <table class="table table-user-information">
+        <tbody>
+          <tr>
+            <td>Nama : </td>
+            <td>{{ Auth::user()->name }}</td>
+          </tr>
+          <tr>
+            <td>Email: </td>
+            <td>{{ Auth::user()->email }}</td>
+          </tr>
+          <tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
 
 
 @endsection

@@ -66,7 +66,7 @@
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Tarikh Hilang:</strong>
+                            <strong>Tarikh Kemaskini:</strong>
                             {!! Form::date('tarikh', null, array('placeholder' => 'Tarikh Hilang','class' => 'form-control')) !!}
 
                         </div>

@@ -27,13 +27,15 @@ class AmaranBencanasController extends Controller
      */
     public function create()
     {
-      $amaran_bencanas = AmaranBencana::with('user')->where('user_id', Auth::user()->id)->paginate(5);
+      $amaran_bencanas = AmaranBencana::with('user')->where('user_id', Auth::user()->id)
+          ->orderBy('tarikhLaporan', 'DESC')->paginate(5);
           return view('AmaranBencana.create', compact('amaran_bencanas'));
     }
 
     public function noti()
     {
-      $amaran_bencanas = AmaranBencana::with('user')->where('is_published', true)->paginate(5);
+      $amaran_bencanas = AmaranBencana::with('user')->where('is_published', true)
+        ->orderBy('tarikhLaporan', 'DESC')->paginate(5);
           return view('AmaranBencana.noti', compact('amaran_bencanas'));
     }
 

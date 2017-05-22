@@ -24,7 +24,7 @@
               <th width="15%">No.Tel </th>
               <th width="10%">Tarikh Buka</th>
               <th width="10%">Tarikh Tutup</th>
-              <th width="15%">Action</th>
+              <th width="15%">Tindakan</th>
             </tr>
           </thead>
           <tbody pull-{right}>

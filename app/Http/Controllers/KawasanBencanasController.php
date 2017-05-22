@@ -26,14 +26,17 @@ class KawasanBencanasController extends Controller
      */
     public function create()
     {
-      $searchResults =Input::get('search');
-      $kawasan_bencanas = KawasanBencana::where('namaKawasan','like','%'.$searchResults.'%')->paginate(5);
+       $searchResults =Input::get('search');
+       $kawasan_bencanas = KawasanBencana::where('namaKawasan','like','%'.$searchResults.'%')
+       ->orderBy('tarikhBerlaku', 'DESC')->paginate(5);
+      // $kawasan_bencanas = KawasanBencana::orderByRaw('DATE(tarikhBerlaku)')->orderBy('jenisBencana', 'desc')->paginate(10);
       return view('KawasanBencana.create', compact('kawasan_bencanas'));
 
 }
       public function notifikasi()
       {
-        $kawasan_bencanas = KawasanBencana::with('user')->where('is_published', true)->paginate(5);
+        $kawasan_bencanas = KawasanBencana::with('user')->where('is_published', true)
+        ->orderBy('tarikhBerlaku', 'DESC')->paginate(5);
         // $searchResults =Input::get('search');
         // $kawasan_bencanas = KawasanBencana::where('namaKawasan','like','%'.$searchResults.'%')->paginate(5);
         return view('KawasanBencana.notifikasi', compact('kawasan_bencanas'));
@@ -154,7 +157,8 @@ class KawasanBencanasController extends Controller
 
    public function barChart()
    {
-     $chart1 = Charts::database(KawasanBencana::all(), 'bar', 'highcharts')
+      $chart1 = Charts::database(KawasanBencana::all(), 'bar', 'highcharts')
+        ->dateColumn('tarikhBerlaku')
         ->title("Statistik Bencana Setiap Bulan 2017")
         ->elementLabel("Jenis Bencana")
         ->dimensions(1000, 500)

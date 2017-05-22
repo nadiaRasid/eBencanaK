@@ -95,7 +95,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Daftar Pengguna
+                                    Daftar Pengguna <i class="glyphicon glyphicon-log-in"> </i>
                                 </button>
 
                             </div>

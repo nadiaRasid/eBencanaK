@@ -1,5 +1,4 @@
 @include('modal.destroy-modal')
-
 @extends('layouts.app')
 @section('content')
 
@@ -19,13 +18,13 @@
           <thead>
             <tr>
               <th>#</th>
-              <th width="15%">Jenis Bencana</th>
+              <th width="10%">Bencana</th>
               <th width="15%">Nama Mangsa</th>
-              <th width="15%">No Kad Pengenalan</th>
+              <th width="15%">Ic</th>
               <th width="15%">Tarikh </th>
               <th width="15%">Status</th>
               <th width="15%">Pusat Pemindahan</th>
-              <th width="15%">Action</th>
+              <th width="15%">Tindakan</th>
             </tr>
           </thead>
           <tbody pull-{right}>
@@ -43,6 +42,7 @@
           @if( $DataBencana->user_id == Auth::user()->id)
           <a href="{{ action('DataBencanasController@edit', $DataBencana->id) }}"
           class="btn btn-primary btn-sm">Edit</a>
+
           <a href="{{ action('DataBencanasController@destroy',$DataBencana->id) }}"
             class="btn btn-danger btn-sm" id="confirm-modal">Padam</a>
           @endif

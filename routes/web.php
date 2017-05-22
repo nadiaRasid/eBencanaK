@@ -17,7 +17,7 @@ Route::get('/', 'ContactController@welcome');
 Route::get('/infobencana', 'ContactController@infobencana');
 Route::get('/contact', 'ContactController@contact');
 Route::get('/notifikasi', 'KawasanBencana@notifikasi');
-Route::get('/noti', 'ContactController@noti');
+
 
 Auth::routes();
 //admin
@@ -40,6 +40,7 @@ Route::group(['middleware' =>  ['auth', 'Admin']], function() {
       Route::get('/DataBencana/{DataBencana}/edit', 'DataBencanasController@edit');
       Route::patch('/DataBencana/{DataBencana}', 'DataBencanasController@update');
       Route::delete('/DataBencana/{DataBencana}/delete', 'DataBencanasController@destroy');
+      // Route::delete('/DataBencana/{DataBencana}/delete', 'DataBencanasController@destroy');
 
       //Amaran Bencana
       Route::get('/AmaranBencana', 'AmaranBencanasController@index');
@@ -95,8 +96,10 @@ Route::group(['before' => 'Admin|OrangAwam'], function() {
   //DataBencana
   Route::get('/maklumat', 'DataBencanasController@maklumat');
   //AmaranBencana
-  //Route::get('/noti', 'AmaranBencanasController@noti');
+  Route::get('/noti', 'AmaranBencanasController@noti');
+  //Route::get('/AmaranBencana', 'AmaranBencanasController@noti');
   Route::get('/AmaranBencana/{AmaranBencana}/details', 'AmaranBencanasController@details');
+
   //KawasanBencana
   Route::get('/notifikasi', 'KawasanBencanasController@notifikasi');
   Route::get('/KawasanBencana/{KawasanBencana}/details', 'KawasanBencanasController@details');

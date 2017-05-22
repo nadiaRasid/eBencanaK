@@ -28,7 +28,8 @@ class LaporKehilangansController extends Controller
      */
     public function create()
     {
-      $lapor_kehilangans = LaporKehilangan::with('user')->where('user_id', Auth::user()->id)->paginate(5);
+      $lapor_kehilangans = LaporKehilangan::with('user')->where('user_id', Auth::user()->id)
+        ->orderBy('tarikhHilang', 'DESC')->paginate(5);
       // dd($lapor_kehilangans);
           return view('LaporKehilangan.create', compact('lapor_kehilangans'));
           //$pendaftarans = Pendaftaran::with('user')->where('user_id', Auth::user()->id)->paginate(5);
@@ -36,11 +37,10 @@ class LaporKehilangansController extends Controller
 
     public function semakan()
     {
-      $lapor_kehilangans = LaporKehilangan::with('user')->where('user_id', Auth::user()->id)->paginate(5);
+      $lapor_kehilangans = LaporKehilangan::with('user')->where('user_id', Auth::user()->id)
+        ->orderBy('tarikhHilang', 'DESC')->paginate(5);
           return view('LaporKehilangan.semakan', compact('lapor_kehilangans'));
     }
-
-
 
     public function store(Request $request)
     {
@@ -136,7 +136,8 @@ class LaporKehilangansController extends Controller
 public function lapor()
 {
   $searchResults =Input::get('search');
-  $lapor_kehilangans = LaporKehilangan::with('user')->where('jenisBencana','like','%'.$searchResults.'%')->paginate(7);
+  $lapor_kehilangans = LaporKehilangan::with('user')->where('jenisBencana','like','%'.$searchResults.'%')
+    ->orderBy('tarikhHilang', 'DESC')->paginate(7);
   return view('LaporKehilangan.lapor', compact('lapor_kehilangans'));
 }
 

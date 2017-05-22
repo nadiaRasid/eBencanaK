@@ -16,9 +16,9 @@
               <th>#</th>
               <th width="15%">Jenis Bencana</th>
               <th width="15%">Nama Mangsa</th>
-              <th width="15%">No Kad Pengenalan</th>
-              <th width="15%">Alamat Mangsa</th>
-              <th width="15%">No.Tel Mangsa</th>
+              <th width="15%">Ic</th>
+              <th width="15%">Alamat</th>
+              <th width="15%">No.Tel</th>
               <th width="15%">Tarikh Hilang</th>
               <th width="15%">Status</th>
               <th width="15%">Pusat Pemindahan</th>
